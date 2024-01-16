@@ -42,14 +42,14 @@ def write_data_to_csv(content):
     for element in content:
         data = list()
         for key in title_keys_path:
-            data.append(get_property(parameters.get(key),element))
+            data.append(get_property(parameters.get(key), element))
         writer.writerow(data)
 
 def send_request():
     """Determina si es necesario un get o post"""
     if METHOD == "get":
-        return requests.get(URL, headers=HEADERS , timeout= TIME_OUT)
-    return requests.post(URL, headers= HEADERS,timeout = TIME_OUT , data = PAYLOAD)
+        return requests.get(URL, headers=HEADERS, timeout=TIME_OUT)
+    return requests.post(URL, headers=HEADERS, timeout=TIME_OUT, data=PAYLOAD)
 
 
 write_data_to_csv(
