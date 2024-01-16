@@ -3,12 +3,13 @@
 import csv
 import requests
 
-HEADERS = None
+
 URL = "https://jsonplaceholder.typicode.com/users"
-parameters = { "Nombre" : "name",
+PARAMETERS = { "Nombre" : "name",
             "Ciudad" : "address.city",
             "Correo Electrónico" : "email"
 }
+HEADERS = None
 PATH_DATA = None
 SPLIT_CHAR = "."
 FILE_NAME = 'archivo.csv'
@@ -18,7 +19,7 @@ PAYLOAD = None
 TIME_OUT = 10
 
 
-title_keys_path = list(parameters.keys())
+title_keys_path = list(PARAMETERS.keys())
 writer = csv.writer(open(FILE_NAME, "w" , encoding = "utf-8"), delimiter = CHAR_DELIMITER)
 writer.writerow(title_keys_path)
 
@@ -42,7 +43,7 @@ def write_data_to_csv(content):
     for element in content:
         data = list()
         for key in title_keys_path:
-            data.append(get_property(parameters.get(key), element))
+            data.append(get_property(PARAMETERS.get(key), element))
         writer.writerow(data)
 
 def send_request():
